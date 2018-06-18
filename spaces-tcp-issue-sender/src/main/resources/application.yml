@@ -1,0 +1,30 @@
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: always
+sender:
+  outbound:
+    host: tcp.pcfbeta.io #To run against a local receiver instance
+#    host: tcp.dev.us-west-2.cernercf.io #To run against PCF
+    port: 10005
+  mllp:
+    start-bytes: 11,11,77,83,72,124,94,126,92
+    payload: 'MSH|^~\&|'
+    end-bytes: 28,13
+    
+#Other start-bytes settings that also fail:
+#    start-bytes: 11,11,77,83,72,124,94,126,92
+#    start-bytes:    11,77,83,72,124,94,126,92
+#    start-bytes:    11,77,83,72,124,94,126,92,38,124
+
+#Some start-bytes settings that actually work:
+#    start-bytes:       12
+#    start-bytes:       11,77
+#    start-bytes:       11,77,77,83,72,124,94,126,92
+#    start-bytes:       11,77,83,72,124,94
+#    start-bytes:       11,77,83,72,124,94,126
+#    start-bytes:       11,                    92
+#    start-bytes:       11,77,77,72,124,94,126,92
+#    start-bytes:       11,83,77,72,124,94,126,92
+#    start-bytes:    12,11,77,83,72,124,94,126,92
+#    start-bytes:    11,12,77,83,72,124,94,126,92
+#    start-bytes: 11,11,11,77,83,72,124,94,126,92

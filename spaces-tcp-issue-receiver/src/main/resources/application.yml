@@ -1,0 +1,6 @@
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: always
+receiver:
+  inbound.port: 10074
+  mllp.end-bytes: 28,13

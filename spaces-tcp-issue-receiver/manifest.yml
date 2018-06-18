@@ -1,0 +1,16 @@
+---
+applications:
+- name: spaces-tcp-issue-receiver
+#  buildpack: java_buildpack_offline
+  memory: 1G
+#  disk_quota: 256M
+  health-check-type: process #So that our logs don't get cluttered with unrelated TCP connections
+  path: target/spaces-tcp-issue-receiver-0.0.1-SNAPSHOT.jar
+  routes:
+  - route: tcp.pcfbeta.io:10005
+#  - route: tcp.pcfbeta.io:10074
+  env:
+    RECEIVER_INBOUND_PORT: 8080
+    RECEIVER.MLLP.END-BYTES: 28,13
+    
+#    JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom

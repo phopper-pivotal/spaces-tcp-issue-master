@@ -1,0 +1,15 @@
+---
+applications:
+- name: spaces-tcp-issue-sender
+  memory: 1G
+  disk_quota: 256M
+  path: target/spaces-tcp-issue-sender-0.0.1-SNAPSHOT.jar
+  env:
+#    SENDER_OUTBOUND_HOST: tcp.dev.us-west-2.cernercf.io
+    SENDER_OUTBOUND_HOST: spaces-tcp-issue-sender.tcp.pcfbeta.io
+    SENDER_OUTBOUND_PORT: 10005
+#    SENDER_OUTBOUND_PORT: 10074
+    SENDER_MLLP_START_BYTES: 11
+    SENDER_MLLP_END_BYTES: 28,13
+    
+#    JAVA_OPTS: -Djava.security.egd=file:/dev/./urandom
